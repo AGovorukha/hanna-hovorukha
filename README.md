@@ -66,6 +66,17 @@ gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
    -sOutputFile=portfolio.pdf "/path/to/original.pdf"
 ```
 
+## When you edit style.css
+
+Bump the version in `index.html`:
+
+```html
+<link rel="stylesheet" href="style.css?v=2">   <!-- -> ?v=3 -->
+```
+
+Browsers cache `style.css` for ~10 minutes. Without the bump, a returning
+visitor can get new HTML with the old stylesheet, which renders broken.
+
 ## Still to check
 
 - `Berlin` in `index.html` — change if that's not where she's working.
