@@ -66,6 +66,19 @@ gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
    -sOutputFile=portfolio.pdf "/path/to/original.pdf"
 ```
 
+## The cover image
+
+`assets/cover.jpg` is page 1 of the portfolio, rendered to an image. It's what
+visitors see before they click, and it's the reason the section still works in
+browsers that refuse to display a PDF inside a page.
+
+Regenerate it whenever the PDF's first page changes:
+
+```sh
+gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=jpeg -dJPEGQ=80 -r80 \
+   -dFirstPage=1 -dLastPage=1 -sOutputFile=assets/cover.jpg portfolio.pdf
+```
+
 ## When you edit style.css
 
 Bump the version in `index.html`:

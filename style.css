@@ -276,30 +276,73 @@ a { color: inherit; }
 .viewer {
   border: 1px solid var(--graphite);
   background: var(--paper);
-  height: min(82vh, 60rem);
 }
 
-.viewer__object { width: 100%; height: 100%; display: block; }
+/* the cover is a real render of page one, so something of her work shows
+   even where a browser refuses to display a PDF inside a page */
+.cover {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
 
-.viewer__fallback,
-.viewer__mobile {
-  display: grid;
-  place-content: center;
-  gap: 1rem;
-  justify-items: start;
+.cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cover__cta {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+  padding: 0.75rem 1.25rem 0.85rem;
+  background: var(--redline);
+  color: #fff;
+  transition: transform 160ms ease;
+}
+
+.cover__cta-main {
+  font-variation-settings: "wdth" 95, "wght" 600;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+.cover__cta-meta {
+  font-size: 0.78rem;
+  font-variation-settings: "wdth" 85, "wght" 500;
+  opacity: 0.82;
+}
+
+.cover:hover .cover__cta,
+.cover:focus-visible .cover__cta { transform: translateY(-2px); }
+
+.viewer.is-open { height: min(82vh, 60rem); }
+
+.viewer__frame {
+  width: 100%;
   height: 100%;
-  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 0;
+  display: block;
+}
+
+.viewer__alt {
+  margin: 0.9rem 0 0;
+  font-size: 0.88rem;
   color: var(--graphite-mid);
 }
 
-.viewer__mobile { display: none; }
-
-/* inline PDF rendering is unreliable on phones — swap for a direct link */
-@media (max-width: 56rem), (hover: none) and (pointer: coarse) {
-  .viewer { height: auto; }
-  .viewer__object { display: none; }
-  .viewer__mobile { display: grid; }
-}
+.viewer__alt a { color: var(--graphite); }
 
 /* ---------- footer ---------- */
 
@@ -361,7 +404,7 @@ a { color: inherit; }
 }
 
 @media print {
-  .viewer, .open, .grid-refs { display: none; }
+  .viewer, .viewer__alt, .open, .grid-refs { display: none; }
   body { background: #fff; }
   .sheet { margin: 0; border: 0; }
 }
