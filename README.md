@@ -48,10 +48,26 @@ To check the size first: `ls -lh portfolio.pdf`
 | `assets/` | Optional images, if the page ever grows project sections. |
 | `.nojekyll` | Tells Pages to serve the files as-is, without Jekyll processing. |
 
-## Still to fill in
+## The portfolio PDF
 
-- `REPLACE-ME@example.com` in `index.html` — swap for her real email, or delete
-  that `<li>` entirely if she'd rather only be reachable via LinkedIn.
+The committed `portfolio.pdf` is a web-optimised build: the 94 MB original was
+downsampled to 150 dpi with Ghostscript, giving 14 MB across the same 37 pages.
+Keep the full-resolution original off GitHub — anything committed here stays in
+git history permanently.
+
+To regenerate from a new original:
+
+```sh
+gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
+   -dDetectDuplicateImages=true \
+   -dDownsampleColorImages=true -dColorImageDownsampleType=/Bicubic -dColorImageResolution=150 \
+   -dDownsampleGrayImages=true -dGrayImageDownsampleType=/Bicubic -dGrayImageResolution=150 \
+   -dAutoFilterColorImages=false -dColorImageFilter=/DCTEncode -dJPEGQ=82 \
+   -sOutputFile=portfolio.pdf "/path/to/original.pdf"
+```
+
+## Still to check
+
 - `Berlin` in `index.html` — change if that's not where she's working.
 
 ## Moving the site to Hanna's own account
