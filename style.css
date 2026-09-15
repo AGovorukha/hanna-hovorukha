@@ -404,7 +404,7 @@ a { color: inherit; }
 }
 
 .palette__chip {
-  height: clamp(3.5rem, 8vw, 6.5rem);
+  height: clamp(1.75rem, 4vw, 3.25rem);
   border-left: 1px solid var(--grid);
 }
 
