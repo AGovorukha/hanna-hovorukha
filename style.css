@@ -54,7 +54,7 @@ a { color: inherit; }
 /* ---------- masthead ---------- */
 
 .masthead {
-  padding-block: clamp(2rem, 6vw, 4.5rem) 0;
+  padding-block: clamp(2rem, 6vw, 4.5rem) clamp(2.5rem, 6vw, 4.5rem);
 }
 
 /* column grid references: bubbles strung on a hairline */
@@ -125,41 +125,6 @@ a { color: inherit; }
   margin: clamp(1.75rem, 4vw, 2.75rem) 0 clamp(2rem, 5vw, 3.25rem);
   color: var(--graphite-mid);
 }
-
-/* ---------- title block ---------- */
-
-.titleblock {
-  border-top: 1px solid var(--graphite);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
-}
-
-.titleblock__cell {
-  padding: 0.85rem var(--gutter) 1rem;
-  border-left: var(--rule);
-}
-
-.titleblock__cell:first-child { border-left: 0; }
-
-/* caps here only: a title block is lettered in caps on every real drawing */
-.titleblock__key {
-  display: block;
-  font-size: 0.62rem;
-  font-variation-settings: "wdth" 78, "wght" 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--graphite-mid);
-  margin-bottom: 0.3rem;
-}
-
-.titleblock__val {
-  font-size: 0.9rem;
-  font-variation-settings: "wdth" 90, "wght" 500;
-}
-
-/* tighten the title block's own gutters so cells read as a strip */
-.titleblock .titleblock__cell { padding-inline: clamp(0.85rem, 2.5vw, 1.5rem); }
-.titleblock .titleblock__cell:first-child { padding-inline-start: var(--gutter); }
 
 @keyframes setout { to { transform: scaleX(1); } }
 @keyframes ink    { to { opacity: 1; } }
@@ -435,7 +400,7 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   border: 1px solid var(--grid);
-  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  margin-bottom: 0;
 }
 
 .palette__chip {
