@@ -55,10 +55,13 @@ downsampled to 150 dpi with Ghostscript, giving 14 MB across the same 37 pages.
 Keep the full-resolution original off GitHub — anything committed here stays in
 git history permanently.
 
-To regenerate from a new original:
+To regenerate from a new original (keep `-dAutoRotatePages=/None` — without it
+Ghostscript turns any page whose text runs mostly vertically, which is how page 30
+once ended up portrait):
 
 ```sh
 gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
+   -dAutoRotatePages=/None \
    -dDetectDuplicateImages=true \
    -dDownsampleColorImages=true -dColorImageDownsampleType=/Bicubic -dColorImageResolution=150 \
    -dDownsampleGrayImages=true -dGrayImageDownsampleType=/Bicubic -dGrayImageResolution=150 \
